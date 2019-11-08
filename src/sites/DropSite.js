@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles} from "@material-ui/styles";
 import {Card} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import DropzoneAreaExample from "./dragNDrop";
 
 const useStyles = makeStyles({
     root: {
@@ -21,8 +22,10 @@ const useStyles = makeStyles({
 export default function DropSite (){
     const classes = useStyles();
     return <Card className={classes.root}>
-                <Typography variant={'h2'} style={{fontWeight: '800'}}>lab73</Typography>
-                <Typography variant={'p'}>UML to Java Converter</Typography>
-            </Card>
+                <Typography variant={'h2'} style={{fontWeight: '800'}}>Team XY</Typography>
+                <Typography variant={'p'} >UML to Java Converter</Typography>
+        <DropzoneAreaExample></DropzoneAreaExample>
+
+    </Card>
 }
 
