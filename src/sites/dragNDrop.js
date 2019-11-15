@@ -18,7 +18,7 @@ class DropzoneAreaExample extends Component{
         return (
             <DropzoneArea
                 onChange={this.handleChange.bind(this)}
-                dropzoneText = "Drag you file here"
+                dropzoneText = "Ds TEAM is dezent Gay"
                 maxWidth = "10"
             />
         )
