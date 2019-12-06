@@ -24,7 +24,7 @@ export default function DropSite (){
     return <Card className={classes.root}>
                 <Typography variant={'h2'} style={{fontWeight: '800'}}>Team XY</Typography>
                 <Typography variant={'p'} >UML to Java Converter</Typography>
-        <DropzoneAreaExample></DropzoneAreaExample>
+        <DropzoneAreaExample/>
 
     </Card>
 }
