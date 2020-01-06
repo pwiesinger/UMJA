@@ -1,39 +1,46 @@
 
-import React, {Component} from 'react'
-import {DropzoneArea} from 'material-ui-dropzone'
-import {AttachFile} from "@material-ui/icons";
-import {NativeSelect} from "@material-ui/core";
+import React, {useState, useEffect} from 'react'
 import AddIcon from '@material-ui/icons/Add';
-import {converter_service} from "../services/converterService";
+import {converter_service} from "../converterService";
 
+const Droparea = () => {
+    //DragNDrop
+    const [dragOver, setDragOver] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-
-class DropzoneAreaExample extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            files: []
-        };
+    const onDrop = (event) => {
+        event.preventDefault();
+        setDragOver(false);
+        setLoading(true);
+        sendFile(event.dataTransfer.files[0])
     }
-    handleChange(files){
-        this.setState({
-            files: files
-        });
+
+    function onDragOver(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        setDragOver(true)
+    }
+
+    function onDragLeave(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        setDragOver(false)
+    }
+
+    function sendFile(files){
+        console.log(files);
+
 
         console.log("Done!");
         converter_service.sendFile(files);
     }
-    render(){
-        return (
-            <DropzoneArea
-                acceptedFiles={[".graphml"]}
-                filesLimit={1}
-                onChange={this.handleChange.bind(this)}
-                dropzoneText = "Upload your file here!"
-                maxWidth = "10"
-            />
-        )
-    }
-}
 
-export default DropzoneAreaExample;
+        return (
+            <div onDrop={onDrop} onDragOver={onDragOver} onDragLeave={onDragLeave} style={{zIndex: 100, display: 'flex' , justifyContent: 'center' , alignItems: 'center', height: '50vh', width: '90vw', border: '2px dashed white', marginTop: '4rem', borderRadius: '10px'}}>
+                <AddIcon style={{fontSize: 100}} />
+            </div>
+        )
+
+};
+
+export default Droparea;

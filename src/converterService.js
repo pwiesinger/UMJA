@@ -39,10 +39,10 @@ function sendFile (file) {
 
     xhr.send(data);*/
 
-    console.log(file[0]);
+    console.log(file);
 
     var data = new FormData();
-    data.append("file", file[0], "package-lock.json");
+    data.append("file", file, "package-lock.json");
 
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = false;
@@ -55,7 +55,6 @@ function sendFile (file) {
 
     xhr.open("GET", "https://umja.herokuapp.com/convert");
     xhr.setRequestHeader("Content-Type", "multipart/form-data; boundary=--------------------------145190103762412521954642");
-
 
     xhr.send(data);
 
