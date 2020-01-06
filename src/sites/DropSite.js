@@ -6,13 +6,12 @@ import Droparea from "./dragNDrop";
 
 const useStyles = makeStyles({
     root: {
-        backgroundColor: '#37BC7A',
+        background: "#2b3fa8",
         color: 'white',
         height: '80vh !important',
-        width: '100vw',
         boxShadow: '0 0 20px #888888',
         borderRadius: '0 0 20px 20px',
-        fontFamily: 'Helvetica',
+        fontFamily: 'Helvetica Neue',
         fontWeight: '900',
         padding: '2rem'
     }
@@ -22,8 +21,9 @@ const useStyles = makeStyles({
 export default function DropSite (){
     const classes = useStyles();
     return <Card className={classes.root}>
-                <Typography variant={'h2'} style={{fontWeight: '800'}}>Team XY</Typography>
-                <Typography variant={'p'} >UML to Java Converter</Typography>
+                <Typography variant={'h3'} >UML to Java Converter</Typography>
+                <Typography variant={'p'} >Drop your .graphml File into the Dropzone.</Typography>
+
         <Droparea/>
     </Card>
 }
