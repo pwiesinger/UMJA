@@ -18,44 +18,15 @@ function sendFileAxios(file) {
 }
 
 function sendFile (file) {
-
-    /*console.log(file[0]);
-
-    const data = new FormData();
-    data.append('file', new Blob([file[0]], { type: 'application/json' }));
-
-    const xhr = new XMLHttpRequest();
-
-
-    xhr.addEventListener("readystatechange", function () {
-        if (this.readyState === 4) {
-            console.log(this.response);
+    const Http = new XMLHttpRequest();
+    const url = "https://umja.herokuapp.com/convertText";
+    Http.open("POST", url);
+    Http.send(file);
+    return new Promise(resolve => {
+        Http.onreadystatechange = (e) => {
+            if (Http.readyState === 4) {
+                resolve(Http.responseText);
+            }
         }
-    });
-
-
-    xhr.open("GET", "https://umja.herokuapp.com/convert");
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    xhr.send(data);*/
-
-    console.log(file);
-
-    var data = new FormData();
-    data.append("file", file, "package-lock.json");
-
-    var xhr = new XMLHttpRequest();
-    xhr.withCredentials = false;
-
-    xhr.addEventListener("readystatechange", function() {
-        if(this.readyState === 4) {
-            console.log(this.responseText);
-        }
-    });
-
-    xhr.open("GET", "https://umja.herokuapp.com/convert");
-    xhr.setRequestHeader("Content-Type", "multipart/form-data; boundary=--------------------------145190103762412521954642");
-
-    xhr.send(data);
-
+    })
 };
