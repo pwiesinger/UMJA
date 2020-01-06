@@ -15,7 +15,7 @@ const Droparea = () => {
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = React.useState(false);
 
-    filereader;
+    var filereader;
     
     const onDrop = (event) => {
         event.preventDefault();
@@ -51,7 +51,7 @@ const Droparea = () => {
         setOpen(false);
     };
     
-    fileFinished = (e) => {
+    const fileFinished = (e) => {
         const content = this.filereader.result;
         converter_service.sendFile(content).then(value => console.log(value));
     };
