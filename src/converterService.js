@@ -21,11 +21,13 @@ function sendFile (file) {
     const Http = new XMLHttpRequest();
     const url = "https://umja.herokuapp.com/convertText";
     Http.open("POST", url);
+    Http.responseType = 'blob';
     Http.send(file);
     return new Promise(resolve => {
         Http.onreadystatechange = (e) => {
             if (Http.readyState === 4) {
-                resolve(Http.responseText);
+
+                resolve(Http.response);
             }
         }
     })

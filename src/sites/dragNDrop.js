@@ -8,14 +8,16 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import saveFile from 'save-as-file';
 
 const Droparea = () => {
     //DragNDrop
     const [dragOver, setDragOver] = useState(false);
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = React.useState(false);
+    const [filereader, setFilereader] = useState(new FileReader());
 
-    var filereader;
+
     
     const onDrop = (event) => {
         event.preventDefault();
@@ -50,19 +52,22 @@ const Droparea = () => {
     const handleClose = () => {
         setOpen(false);
     };
-    
-    const fileFinished = (e) => {
-        const content = this.filereader.result;
-        converter_service.sendFile(content).then(value => console.log(value));
+
+
+    function fileFinished(e) {
+        const content = filereader.result;
+        console.log(content);
+        converter_service.sendFile(content).then((value) => {
+            saveFile(value, "umja_files.zip");
+        });
     };
 
-    function sendFile(files){
+    const sendFile = (files) =>{
         console.log(files);
 
-
-        this.filereader = new FileReader();
-        this.filereader.onloadend = this.fileFinished;
-        this.filereader.readAsText(files[0]);
+        console.log(filereader);
+        filereader.onloadend = fileFinished;
+        filereader.readAsText(files);
     }
 
         return (
