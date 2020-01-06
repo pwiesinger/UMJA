@@ -8977,6 +8977,13 @@ sass-loader@7.2.0:
     pify "^4.0.1"
     semver "^5.5.0"
 
+save-as-file@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/save-as-file/-/save-as-file-0.2.0.tgz#1f97cd90cfce366760af3e5b05fa8c9aefdd2056"
+  integrity sha512-GA9bIaIL9XNjg1Mh8+/oCrej+45znfr/9zp/74q8s4VKmoRLobmYW5YeTvCTyI50vDCgFiBmfdaVvskPl6RUug==
+  dependencies:
+    tslib "^1.9.0"
+
 sax@^1.2.4, sax@~1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
